@@ -85,7 +85,9 @@ TraceEnable off
 
 Header set X-XSS-Protection "1; mode=block"
 Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-Header always append X-Frame-Options DENY
-Header set X-Content-Type-Options nosniff
-Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
+Header set Content-Security-Policy: default-src 'self'
 Header set Referrer-Policy "no-referrer-when-downgrade"
+Header set X-Content-Type-Options nosniff
+Header always append X-Frame-Options DENY
+Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
+Header set Feature-Policy camera: 'self'; vr: 'none'; microphone: 'self';  payment: 'self'; midi: 'self'; microphone: 'self'
